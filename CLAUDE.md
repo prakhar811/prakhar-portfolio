@@ -332,7 +332,7 @@ Claude may make normal implementation and design decisions independently. Do not
 ## 18. Established Conventions (from the portfolio build)
 
 - **Hydration-safe preferences:** read media queries through `src/lib/useMedia.ts` (`useSyncExternalStore` with a server snapshot). Do not use `motion`'s `useReducedMotion` — it is not hydration-safe and causes React error #418.
-- **Scene state is not React state:** scroll/pointer/stage values live in `src/lib/scrollStore.ts` and the WebGL scene mutates refs inside `useFrame`. Never `setState` per frame.
+- **Scene state is not React state:** scroll/pointer/stage values live in `src/lib/scrollStore.ts` and the WebGL scene (`components/three/ArchitectureScene.tsx`, model in `src/lib/architecture.ts`) mutates refs inside `useFrame`. Never `setState` per frame.
 - **Modals** use the native `<dialog>` via `components/ui/Modal.tsx`. Mark the intended initial focus target with `data-autofocus`.
 - **Cache Components is on** (`next.config.ts`). Cached routes keep prior pages mounted-but-hidden, so scope DOM queries by visibility, and avoid `new Date()` / `Math.random()` in server components.
 - **Project visuals** are native SVG/CSS/Motion keyed by `Project.visual` in `src/data/projects.ts`; diagrams must stay illustrative and labelled as such unless backed by verified facts.

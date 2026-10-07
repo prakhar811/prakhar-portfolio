@@ -2,7 +2,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import { Component, useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
-import { EngineeringConstellation } from "./EngineeringConstellation";
+import { ArchitectureScene } from "./ArchitectureScene";
 import { SceneFallback } from "./SceneFallback";
 import { useIsMobile, useReducedMotionPref } from "@/lib/useMedia";
 import { sceneState } from "@/lib/scrollStore";
@@ -57,16 +57,11 @@ export default function SceneCanvas() {
         key={reduced ? "static" : "live"}
         dpr={mobile ? 1 : [1, 1.5]}
         frameloop={reduced ? "demand" : visible ? "always" : "never"}
-        camera={{ position: [0, 0, 9.5], fov: 50, near: 0.1, far: 60 }}
+        camera={{ position: [0, 6.2, 12.5], fov: 38, near: 0.1, far: 80 }}
         gl={{ alpha: false, antialias: !mobile, powerPreference: "default" }}
         style={{ position: "absolute", inset: 0, mixBlendMode: "screen", opacity: 0.9 }}
       >
-        <EngineeringConstellation
-          key={mobile ? "m" : "d"}
-          count={mobile ? 26 : 46}
-          particles={mobile ? 80 : 240}
-          reduced={reduced}
-        />
+        <ArchitectureScene reduced={reduced} mobile={mobile} />
       </Canvas>
     </SceneBoundary>
   );

@@ -2,7 +2,7 @@
 
 Personal engineering portfolio for **Prakhar Parashar** — Software Engineer × AI Engineer (CSE @ RVCE, Bangalore).
 
-The site is built around one idea: an engineering observatory. A single WebGL "engineering constellation" sits behind the page and reorganises as you scroll, while each project gets its own bespoke, data-driven diagram instead of a screenshot card.
+The site is built around one idea: an engineering observatory. A single WebGL "layered systems architecture" scene sits behind the page and adapts as you scroll, while each project gets its own bespoke, data-driven diagram instead of a screenshot card.
 
 ## Design philosophy
 
@@ -17,7 +17,7 @@ Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind 
 
 ## Features
 
-- Scroll-linked Three.js constellation (single WebGL context, DPR-capped, reduced on mobile, paused when the tab is hidden, CSS fallback without WebGL)
+- Scroll-linked Three.js architecture scene: six labelled system layers (Frontend → API/Backend → Database → AI/Models → Memory/Context → Agents/Evaluation) joined by signal conduits. Layers open up in the hero, tighten in About, light up progressively in Experience, highlight the layers each project uses in Work, tint by domain in Skills, and collapse calmly at Contact. Single WebGL context, DPR-capped, fewer pulses on mobile, paused when the tab is hidden, CSS fallback without WebGL.
 - Editorial hero with portrait, pointer parallax and magnetic CTA
 - Experience "signal path" timeline, technical-universe skills map (grouped lists on mobile)
 - Flagship + featured + archive project hierarchy, each with its own interactive diagram
@@ -36,11 +36,11 @@ src/
     sections/          Hero, About, Experience, SelectedWork, Skills, Contact, ...
     projects/          ProjectShowcase, CaseStudy, per-project visuals, DemoModal
     motion/            Reveal, MagneticButton, ParallaxMedia, CursorGlow, SmoothScroll
-    three/             SceneCanvas, EngineeringConstellation, NodeField, Connections, ...
+    three/             SceneCanvas, ArchitectureScene, SystemLayer, SignalPaths, ...
     command/           CommandPalette, SystemTerminal
     ui/                LinkButton, Tag, SectionLabel, Modal
   data/                profile, projects, experience, skills, achievements, current, navigation
-  lib/                 constellation layout, scroll store, hooks, helpers
+  lib/                 architecture model (layers, stages, project focus), scroll store, hooks
   types/               shared interfaces
 public/
   images/prakhar-portrait.jpeg

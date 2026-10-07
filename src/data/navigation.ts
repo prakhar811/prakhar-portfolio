@@ -9,7 +9,7 @@ export const navItems: NavItem[] = [
   { label: "Contact", href: "/#contact", section: "contact" },
 ];
 
-/** Order of the scroll-linked 3D story. Each id maps to a stage in the constellation. */
+/** Order of the scroll-linked 3D story. Each id maps to a stage in the architecture scene. */
 export const sceneSections = [
   "top",
   "about",

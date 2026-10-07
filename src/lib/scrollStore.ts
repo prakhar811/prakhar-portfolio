@@ -1,3 +1,5 @@
+import { FOCUS_IDS } from "@/lib/architecture";
+
 /**
  * Mutable, non-reactive scroll/pointer state shared with the WebGL scene.
  * The scene reads this inside its frame loop, so scrolling never triggers React renders.
@@ -7,6 +9,9 @@ export const sceneState = {
   stage: 0,
   /** Pages without scroll sections (case studies) pin the scene to a fixed stage. */
   stageOverride: null as number | null,
+  /** Project whose section is at the middle of the viewport (drives which layers light up). */
+  focus: null as string | null,
+  focusOverride: null as string | null,
   /** Overall page progress 0..1. */
   progress: 0,
   /** Pointer in normalized device coordinates (-1..1). */
@@ -36,6 +41,17 @@ export function setStageFromSections(ids: readonly string[]) {
     }
   }
   sceneState.stage = stage;
+
+  let focus: string | null = null;
+  for (const id of FOCUS_IDS) {
+    const r = document.getElementById(id)?.getBoundingClientRect();
+    if (r && r.height > 0 && r.top <= mid && r.bottom >= mid) {
+      focus = id;
+      break;
+    }
+  }
+  sceneState.focus = focus;
+
   const doc = document.documentElement;
   const max = doc.scrollHeight - window.innerHeight;
   sceneState.progress = max > 0 ? window.scrollY / max : 0;

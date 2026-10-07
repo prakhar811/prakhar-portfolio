@@ -41,7 +41,7 @@ export function CaseStudy({ project: p }: { project: Project }) {
 
   return (
     <article className="relative">
-      <SceneStage stage={3} />
+      <SceneStage stage={3} focus={p.slug} />
 
       {/* Project hero */}
       <header className="container-x pb-16 pt-32 md:pb-24 md:pt-44">
